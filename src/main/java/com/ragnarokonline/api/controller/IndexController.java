@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Index {
+public class IndexController {
 
     @GetMapping("/")
-    String defaultRoute() {
+    public String defaultRoute() {
         return "rathena-online api is online!";
     }
     
