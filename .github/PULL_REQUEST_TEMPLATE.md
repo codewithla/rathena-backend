@@ -3,7 +3,7 @@
 * **Addressed Issue(s)**: 
 
 <!--
-Please specify the [GitHub issue(s)](https://github.com/codewithla/rathena-game/issues) this pull request amends. 
+Please specify the [GitHub issue(s)](https://github.com/codewithla/rathena-backend/issues) this pull request amends. 
 Yes. There should be an issue for any fixes
 -->
 
