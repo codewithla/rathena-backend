@@ -2,19 +2,23 @@ package com.ragnarokonline.api.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
-@SpringBootTest
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(controllers = IndexController.class)
 public class IndexTests {
     
     @Autowired
-    private IndexController controller;
+    private MockMvc mockMvc;
 
     @Test
-    public void testDefaultRoute() {
-        assertThat(controller).isNotNull();
-        assert(controller.defaultRoute()).equals("rathena-online api is online!");
+    public void testDefaultRoute() throws Exception {
+        mockMvc.perform(get("/")).andExpect(content().string(containsString("rathena-online api is online!"))).andExpect(status().isOk());
     }
 }
