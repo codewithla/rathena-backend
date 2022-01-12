@@ -12,9 +12,10 @@ public class IndexController {
     @GetMapping("/")
     public Map<String, String> defaultRoute() {
         HashMap<String, String> map = new HashMap<>();
-        map.put("statusCocde", "200");
+        map.put("statusCode", "200");
+        map.put("status", "SUCCESS");
         map.put("message", "rathena-online api is online!");
-        map.put("data", "");
+        map.put("data", null);
         return map;
     }
 }

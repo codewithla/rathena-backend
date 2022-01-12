@@ -19,6 +19,10 @@ public class IndexTests {
 
     @Test
     public void testDefaultRoute() throws Exception {
-        mockMvc.perform(get("/")).andExpect(content().string(containsString("rathena-online api is online!"))).andExpect(status().isOk());
+        mockMvc.perform(get("/"))
+        .andExpect(content().string(containsString("200")))
+        .andExpect(content().string(containsString("SUCCESS")))
+        .andExpect(content().string(containsString("rathena-online api is online!")))
+        .andExpect(status().isOk());
     }
 }
