@@ -1,15 +1,16 @@
----
-name: New Issue
-about: Create a new issue
-title: ''
-labels: ''
-assignees: ''
+<!-- NOTE: Anything within these brackets will be hidden on the preview of the Pull Request. -->
 
----
+* **Addressed Issue(s)**: 
 
-**What are we doing**
-In 1 sentence explain what this issue is going to accomplish.
-### How we plan to do
-In as much detail as possible, explain how what we are doing will be accomplished.
-### Should have done
-Should list the items that can be verified/tested after we have completed the above ask.
+<!--
+Please specify the [GitHub issue(s)](https://github.com/codewithla/rathena-backend/issues) this pull request amends. 
+Yes. There should be an issue for any fixes
+-->
+
+* **Description of Pull Request**: 
+
+<!-- Describe how this pull request will resolve the issue(s) listed above. -->
+
+* **Testing Evidence**: 
+
+<!-- You tested everything and are proud of your code. Let's show it off! -->
