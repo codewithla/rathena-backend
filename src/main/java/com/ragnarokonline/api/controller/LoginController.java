@@ -88,7 +88,7 @@ public class LoginController {
     public ResponseEntity<?> updateAccountsById(@PathVariable int account_id, @RequestBody LoginModel account) {
         try {
             Optional<LoginModel> response = loginRepository.findById(account_id);
-            if (!response.isPresent()) {
+            if (response == null) {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
