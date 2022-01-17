@@ -15,10 +15,10 @@ public class AuctionModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int auction_id;
     private int seller_id;
-    @Column(name = "sellerName")
+    @Column(name = "seller_name")
     private String sellerName;
     private int buyer_id;
-    @Column(name = "buyerName")
+    @Column(name = "buyer_name")
     private String buyerName;
     private int price;
     private int buynow;
