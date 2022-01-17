@@ -1,6 +1,5 @@
 package com.ragnarokonline.api.controller;
 
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
