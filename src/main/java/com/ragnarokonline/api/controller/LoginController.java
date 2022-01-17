@@ -70,6 +70,20 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getAccountsByEmail(@PathVariable String email) {
+        LoginModel response = loginRepository.getUserByEmail(email).orElse(null);
+        if (response == null) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("statusCode", "400");
+            map.put("status", "BAD REQUEST");
+            map.put("messsage", "API Message: Failed to find account based on email from the db");
+            return ResponseEntity.badRequest().body(map);
+        } else {
+            return ResponseEntity.ok(response);
+        }
+    }
+
     @PostMapping("/new")
     public ResponseEntity<?> saveAccount(@RequestBody LoginModel account) {
         try {

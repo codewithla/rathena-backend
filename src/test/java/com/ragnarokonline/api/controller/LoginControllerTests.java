@@ -86,6 +86,22 @@ public class LoginControllerTests {
     }
 
     @Test
+    public void getAccountsByEmail() throws Exception {
+        Mockito.when(this.loginRepository.getUserByEmail(anyString())).thenReturn(Optional.of(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0)));
+        mockMvc.perform(get("/v1/accounts/email/{email}", "email@gmail.com"))
+        .andExpect(content().string(containsString("\"account_id\":2000000")))
+        .andExpect(status().isOk());
+    }
+
+    @Test
+    public void getAccountsByEmailFail() throws Exception {
+        // Mockito.when(this.loginRepository.findById(2000000)).thenReturn(Optional.of(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0)));
+        mockMvc.perform(get("/v1/accounts/email/{email}", "email"))
+        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find account based on email from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(status().isBadRequest());
+    }
+
+    @Test
     public void saveAccount() throws Exception {
         Mockito.when(this.loginRepository.save(any(LoginModel.class))).thenReturn(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0));
         mockMvc.perform(post("/v1/accounts/new/"))
