@@ -35,7 +35,7 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve accounts from the db");
+            map.put("message", "API Message: Failed to retrieve accounts from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -49,7 +49,7 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve account from the db");
+            map.put("message", "API Message: Failed to retrieve account from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -63,7 +63,7 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to find account based on userid from the db");
+            map.put("message", "API Message: Failed to find account based on userid from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -77,7 +77,7 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to find account based on email from the db");
+            map.put("message", "API Message: Failed to find account based on email from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -91,7 +91,7 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Successfully added account to db");
+            map.put("message", "API Message: Successfully added account to db");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e);
@@ -106,7 +106,7 @@ public class LoginController {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
-                map.put("messsage", "API Message: Failed to find account based on account id from the db");
+                map.put("message", "API Message: Failed to find account based on account id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
                 LoginModel accountData = response.get();
@@ -168,7 +168,7 @@ public class LoginController {
                     HashMap<String, String> map = new HashMap<>();
                     map.put("statusCode", "200");
                     map.put("status", "SUCCESSFUL");
-                    map.put("messsage", "API Message: Successfully updated account details in the db");
+                    map.put("message", "API Message: Successfully updated account details in the db");
                     return ResponseEntity.ok(map);
                 } catch (Exception e) {
                     return ResponseEntity.badRequest().body(e);
@@ -186,13 +186,13 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted account");
+            map.put("message", "API Message: Successfully deleted account");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to delete account with account_id");
+            map.put("message", "API Message: Failed to delete account with account_id");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }
@@ -205,14 +205,14 @@ public class LoginController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted all accounts");
+            map.put("message", "API Message: Successfully deleted all accounts");
             return ResponseEntity.ok(map);
 
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to all accounts");
+            map.put("message", "API Message: Failed to all accounts");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }

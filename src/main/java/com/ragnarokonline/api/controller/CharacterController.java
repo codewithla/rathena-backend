@@ -35,7 +35,7 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve characters from the db");
+            map.put("message", "API Message: Failed to retrieve characters from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -49,7 +49,7 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve character from the db");
+            map.put("message", "API Message: Failed to retrieve character from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -63,7 +63,7 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve character from the db with name");
+            map.put("message", "API Message: Failed to retrieve character from the db with name");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -79,7 +79,7 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Successfully added character to db");
+            map.put("message", "API Message: Successfully added character to db");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e);
@@ -94,7 +94,7 @@ public class CharacterController {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
-                map.put("messsage", "API Message: Failed to find character based on character id from the db");
+                map.put("message", "API Message: Failed to find character based on character id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
                 CharacterModel characterData = resposne.get();
@@ -289,7 +289,7 @@ public class CharacterController {
                     HashMap<String, String> map = new HashMap<>();
                     map.put("statusCode", "200");
                     map.put("status", "SUCCESSFUL");
-                    map.put("messsage", "API Message: Successfully updated character details in the db");
+                    map.put("message", "API Message: Successfully updated character details in the db");
                     return ResponseEntity.ok(map);
                 } catch (Exception e) {
                     return ResponseEntity.badRequest().body(e);
@@ -307,13 +307,13 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted character");
+            map.put("message", "API Message: Successfully deleted character");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to delete character with char_id");
+            map.put("message", "API Message: Failed to delete character with char_id");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }
@@ -326,14 +326,14 @@ public class CharacterController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted all characters");
+            map.put("message", "API Message: Successfully deleted all characters");
             return ResponseEntity.ok(map);
 
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to all characters");
+            map.put("message", "API Message: Failed to all characters");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }

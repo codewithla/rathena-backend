@@ -46,7 +46,7 @@ public class CharacterControllerTests {
     @Test
     public void getCharactersFail() throws Exception {
         mockMvc.perform(get("/v1/characters/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve characters from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve characters from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -61,7 +61,7 @@ public class CharacterControllerTests {
     @Test
     public void getCharactersByIdFail() throws Exception {
         mockMvc.perform(get("/v1/characters/{char_id}", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve character from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve character from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -76,7 +76,7 @@ public class CharacterControllerTests {
     @Test
     public void getCharacterByNameFail() throws Exception {
         mockMvc.perform(get("/v1/characters/name/{name}", "name"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve character from the db with name\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve character from the db with name\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -84,7 +84,7 @@ public class CharacterControllerTests {
     public void saveCharacter() throws Exception {
         Mockito.when(this.characterRepository.save(any(CharacterModel.class))).thenReturn(new CharacterModel(1, 2000000, 1, "name", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "last_map", 0, 0, "save_map", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "M", 0, 9, 0, null, 0, 0));
         mockMvc.perform(post("/v1/characters/new/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully added character to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully added character to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -100,7 +100,7 @@ public class CharacterControllerTests {
         Mockito.when(this.characterRepository.findById(anyInt())).thenReturn(Optional.of(new CharacterModel(1, 2000000, 1, "name", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "last_map", 0, 0, "save_map", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "M", 0, 9, 0, null, 0, 0)));
         Mockito.when(this.characterRepository.save(any(CharacterModel.class))).thenReturn(new CharacterModel(1, 2000000, 1, "name", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "last_map", 0, 0, "save_map", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "M", 0, 9, 0, null, 0, 0));
         mockMvc.perform(put("/v1/characters/{char_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully updated character details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully updated character details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -108,7 +108,7 @@ public class CharacterControllerTests {
     public void updateCharacterByIdfindByIdFail() throws Exception {
         Mockito.when(this.characterRepository.findById(anyInt())).thenReturn(null);
         mockMvc.perform(put("/v1/characters/{char_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find character based on character id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to find character based on character id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -131,7 +131,7 @@ public class CharacterControllerTests {
     public void deleteCharacterById() throws Exception {
         // Mockito.when(this.auctionRepository.deleteById(1)).thenReturn(null);
         mockMvc.perform(delete("/v1/characters/{char_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted character\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted character\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -146,7 +146,7 @@ public class CharacterControllerTests {
     @Test
     public void deleteAllCharacters() throws Exception {
         mockMvc.perform(delete("/v1/characters/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted all characters\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted all characters\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
