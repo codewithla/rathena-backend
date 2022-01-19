@@ -165,7 +165,21 @@ public class GuildControllertests {
     }
 
     @Test
+    public void deleteGuildByIdFail() throws Exception {
+        Mockito.doThrow(new RuntimeException()).when(this.guildRepository).deleteById(1);
+        mockMvc.perform(delete("/v1/guilds/{guild}/", 1))
+        .andExpect(status().isBadRequest());
+    }
+
+    @Test
     public void deleteAllGuilds() throws Exception {
+        mockMvc.perform(delete("/v1/guilds/"))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted all guilds\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(status().isOk());
+    }
+
+    @Test
+    public void deleteAllGuildsFail() throws Exception {
         Mockito.doThrow(new RuntimeException()).when(this.guildRepository).deleteAll();
         mockMvc.perform(delete("/v1/guilds/"))
         .andExpect(status().isBadRequest());
