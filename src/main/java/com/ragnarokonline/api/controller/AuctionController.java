@@ -35,7 +35,7 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve auction from the db");
+            map.put("message", "API Message: Failed to retrieve auction from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -50,7 +50,7 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve auction from the db");
+            map.put("message", "API Message: Failed to retrieve auction from the db");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -64,7 +64,7 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve auction from the db with sellerName");
+            map.put("message", "API Message: Failed to retrieve auction from the db with sellerName");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -78,7 +78,7 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to retrieve auction from the db with buyerName");
+            map.put("message", "API Message: Failed to retrieve auction from the db with buyerName");
             return ResponseEntity.badRequest().body(map);
         } else {
             return ResponseEntity.ok(response);
@@ -92,7 +92,7 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Successfully added auction to db");
+            map.put("message", "API Message: Successfully added auction to db");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e);
@@ -107,7 +107,7 @@ public class AuctionController {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
-                map.put("messsage", "API Message: Failed to find auction based on auction id from the db");
+                map.put("message", "API Message: Failed to find auction based on auction id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
                 AuctionModel auctionData = resposne.get();
@@ -218,7 +218,7 @@ public class AuctionController {
                     HashMap<String, String> map = new HashMap<>();
                     map.put("statusCode", "200");
                     map.put("status", "SUCCESSFUL");
-                    map.put("messsage", "API Message: Successfully updated auction details in the db");
+                    map.put("message", "API Message: Successfully updated auction details in the db");
                     return ResponseEntity.ok(map);
                 } catch (Exception e) {
                     return ResponseEntity.badRequest().body(e);
@@ -236,13 +236,13 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted auction");
+            map.put("message", "API Message: Successfully deleted auction");
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to delete auction with auction_id");
+            map.put("message", "API Message: Failed to delete auction with auction_id");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }
@@ -255,14 +255,14 @@ public class AuctionController {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "200");
             map.put("status", "SUCCESSFUL");
-            map.put("messsage", "API Message: Sucessfully deleted all auctions");
+            map.put("message", "API Message: Successfully deleted all auctions");
             return ResponseEntity.ok(map);
 
         } catch (Exception e) {
             HashMap<String, String> map = new HashMap<>();
             map.put("statusCode", "400");
             map.put("status", "BAD REQUEST");
-            map.put("messsage", "API Message: Failed to all auctions");
+            map.put("message", "API Message: Failed to all auctions");
             map.put("errorMessage", "Error Message: " + e.getMessage());
             return ResponseEntity.badRequest().body(map);
         }

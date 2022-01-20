@@ -49,7 +49,7 @@ public class LoginControllerTests {
     @Test
     public void getAccountsTestFail() throws Exception {
         mockMvc.perform(get("/v1/accounts/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve accounts from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve accounts from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -64,7 +64,7 @@ public class LoginControllerTests {
     @Test
     public void getAccountsByIdFail() throws Exception {
         mockMvc.perform(get("/v1/accounts/{account_id}", 2000001))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve account from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve account from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -80,7 +80,7 @@ public class LoginControllerTests {
     public void getAccountsByUserNameFail() throws Exception {
         // Mockito.when(this.loginRepository.findById(2000000)).thenReturn(Optional.of(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0)));
         mockMvc.perform(get("/v1/accounts/username/{userid}", "userid"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find account based on userid from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to find account based on userid from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -96,7 +96,7 @@ public class LoginControllerTests {
     public void getAccountsByEmailFail() throws Exception {
         // Mockito.when(this.loginRepository.findById(2000000)).thenReturn(Optional.of(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0)));
         mockMvc.perform(get("/v1/accounts/email/{email}", "email"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find account based on email from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to find account based on email from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -104,7 +104,7 @@ public class LoginControllerTests {
     public void saveAccount() throws Exception {
         Mockito.when(this.loginRepository.save(any(LoginModel.class))).thenReturn(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0));
         mockMvc.perform(post("/v1/accounts/new/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully added account to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully added account to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -120,7 +120,7 @@ public class LoginControllerTests {
         Mockito.when(this.loginRepository.findById(anyInt())).thenReturn(Optional.of(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0)));
         Mockito.when(this.loginRepository.save(any(LoginModel.class))).thenReturn(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0));
         mockMvc.perform(put("/v1/accounts/{account_id}/", 2000000))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully updated account details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully updated account details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -129,7 +129,7 @@ public class LoginControllerTests {
         Mockito.when(this.loginRepository.findById(anyInt())).thenReturn(null);
         // Mockito.when(this.loginRepository.save(any(LoginModel.class))).thenReturn(new LoginModel(2000000, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0));
         mockMvc.perform(put("/v1/accounts/{account_id}/", 2000000))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find account based on account id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to find account based on account id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -152,7 +152,7 @@ public class LoginControllerTests {
     public void deleteAccountById() throws Exception {
         // Mockito.when(this.loginRepository.deleteById(2000000)).thenReturn(null);
         mockMvc.perform(delete("/v1/accounts/{account_id}/", 2000000))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted account\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted account\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -161,14 +161,14 @@ public class LoginControllerTests {
         Mockito.doThrow(new RuntimeException()).when(this.loginRepository).deleteById(2000000);
         // Mockito.when(this.loginRepository.deleteById(2000000)).thenThrow(new RuntimeException());
         mockMvc.perform(delete("/v1/accounts/{account_id}/", 2000000))
-        // .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully updated account details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        // .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully updated account details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isBadRequest());
     }
 
     @Test
     public void deleteAllAccounts() throws Exception {
         mockMvc.perform(delete("/v1/accounts/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted all accounts\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted all accounts\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 

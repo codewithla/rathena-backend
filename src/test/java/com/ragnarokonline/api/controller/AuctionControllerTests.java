@@ -47,7 +47,7 @@ public class AuctionControllerTests {
     @Test
     public void getAuctionsFail() throws Exception {
         mockMvc.perform(get("/v1/auctions/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve auction from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve auction from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -62,7 +62,7 @@ public class AuctionControllerTests {
     @Test
     public void getAuctionByIdFail() throws Exception {
         mockMvc.perform(get("/v1/auctions/{auction_id}", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve auction from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve auction from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -77,7 +77,7 @@ public class AuctionControllerTests {
     @Test
     public void getAuctionBySellerNameFail() throws Exception {
         mockMvc.perform(get("/v1/auctions/sellername/{sellerName}", "sellerName"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve auction from the db with sellerName\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve auction from the db with sellerName\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -92,7 +92,7 @@ public class AuctionControllerTests {
     @Test
     public void getAuctionByBuyerNameFail() throws Exception {
         mockMvc.perform(get("/v1/auctions/buyername/{buyerName}", "buyerName"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to retrieve auction from the db with buyerName\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to retrieve auction from the db with buyerName\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -100,7 +100,7 @@ public class AuctionControllerTests {
     public void saveAuction() throws Exception {
         Mockito.when(this.auctionRepository.save(any(AuctionModel.class))).thenReturn(new AuctionModel(1, 1, "sellerName", 1, "buyerName", 1, 1, 1, 1, 1, "item_name", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
         mockMvc.perform(post("/v1/auctions/new/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully added auction to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully added auction to db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -116,7 +116,7 @@ public class AuctionControllerTests {
         Mockito.when(this.auctionRepository.findById(anyInt())).thenReturn(Optional.of(new AuctionModel(1, 1, "sellerName", 1, "buyerName", 1, 1, 1, 1, 1, "item_name", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)));
         Mockito.when(this.auctionRepository.save(any(AuctionModel.class))).thenReturn(new AuctionModel(1, 1, "sellerName", 1, "buyerName", 1, 1, 1, 1, 1, "item_name", 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1));
         mockMvc.perform(put("/v1/auctions/{auction_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully updated auction details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully updated auction details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -125,7 +125,7 @@ public class AuctionControllerTests {
         Mockito.when(this.auctionRepository.findById(anyInt())).thenReturn(null);
         // Mockito.when(this.auctionRepository.save(any(LoginModel.class))).thenReturn(new LoginModel(1, "userid", "user_pass", "M", "email@gmail.com", 0, 0, 0, 0, null, "192.168.0.231", null, 0, "0000", 0, 0, 0, null, 0));
         mockMvc.perform(put("/v1/auctions/{auction_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Failed to find auction based on auction id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Failed to find auction based on auction id from the db\",\"statusCode\":\"400\",\"status\":\"BAD REQUEST\"}")))
         .andExpect(status().isBadRequest());
     }
 
@@ -148,7 +148,7 @@ public class AuctionControllerTests {
     public void deleteAuctionById() throws Exception {
         // Mockito.when(this.auctionRepository.deleteById(1)).thenReturn(null);
         mockMvc.perform(delete("/v1/auctions/{auction_id}/", 1))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted auction\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted auction\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
@@ -157,14 +157,14 @@ public class AuctionControllerTests {
         Mockito.doThrow(new RuntimeException()).when(this.auctionRepository).deleteById(1);
         // Mockito.when(this.auctionRepository.deleteById(1)).thenThrow(new RuntimeException());
         mockMvc.perform(delete("/v1/auctions/{auction_id}/", 1))
-        // .andExpect(content().string(containsString("{\"messsage\":\"API Message: Successfully updated auction details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        // .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully updated auction details in the db\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isBadRequest());
     }
 
     @Test
     public void deleteAllAuctions() throws Exception {
         mockMvc.perform(delete("/v1/auctions/"))
-        .andExpect(content().string(containsString("{\"messsage\":\"API Message: Sucessfully deleted all auctions\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
+        .andExpect(content().string(containsString("{\"message\":\"API Message: Successfully deleted all auctions\",\"statusCode\":\"200\",\"status\":\"SUCCESSFUL\"}")))
         .andExpect(status().isOk());
     }
 
