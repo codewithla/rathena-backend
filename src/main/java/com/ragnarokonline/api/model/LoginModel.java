@@ -24,7 +24,7 @@ public class LoginModel {
     private int state;
     private int unban_time;
     private int logincount;
-    @Column(name = "last_login")
+    // @Column(name = "last_login")
     private Date lastlogin;
     private String last_ip;
     private Date birthdate;
