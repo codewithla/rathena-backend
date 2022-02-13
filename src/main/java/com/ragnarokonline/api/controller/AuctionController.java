@@ -102,15 +102,15 @@ public class AuctionController {
     @PutMapping("/{auction_id}")
     public ResponseEntity<?> updateAuctionById(@PathVariable int auction_id, @RequestBody AuctionModel auction) {
         try {
-            Optional<AuctionModel> resposne = auctionRepository.findById(auction_id);
-            if (resposne == null) {
+            Optional<AuctionModel> response = auctionRepository.findById(auction_id);
+            if (response == null) {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
                 map.put("message", "API Message: Failed to find auction based on auction id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
-                AuctionModel auctionData = resposne.get();
+                AuctionModel auctionData = response.get();
                 if (auction.getAttribute() != 0) {
                     auctionData.setAttribute(auction.getAttribute());
                 }

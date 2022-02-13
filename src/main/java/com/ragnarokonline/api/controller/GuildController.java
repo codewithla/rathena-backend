@@ -115,15 +115,15 @@ public class GuildController {
     @PutMapping("/update/{guild_id}")
     public ResponseEntity<?> updateGuildById(@PathVariable int guild_id, @RequestBody GuildModel guild) {
         try {
-            Optional<GuildModel> resposne = guildRepository.findById(guild_id);
-            if (resposne == null) {
+            Optional<GuildModel> response = guildRepository.findById(guild_id);
+            if (response == null) {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
                 map.put("message", "API Message: Failed to find guild based on guild id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
-                GuildModel guildData = resposne.get();
+                GuildModel guildData = response.get();
                 if (guild.getAverage_lv() != 0) {
                     guildData.setAverage_lv(guild.getAverage_lv());
                 }

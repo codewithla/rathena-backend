@@ -89,15 +89,15 @@ public class CharacterController {
     @PutMapping("/{char_id}")
     public ResponseEntity<?> updateCharacterById(@PathVariable int char_id, @RequestBody CharacterModel character) {
         try {
-            Optional<CharacterModel> resposne = characterRepository.findById(char_id);
-            if (resposne == null) {
+            Optional<CharacterModel> response = characterRepository.findById(char_id);
+            if (response == null) {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("statusCode", "400");
                 map.put("status", "BAD REQUEST");
                 map.put("message", "API Message: Failed to find character based on character id from the db");
                 return ResponseEntity.badRequest().body(map);
             } else {
-                CharacterModel characterData = resposne.get();
+                CharacterModel characterData = response.get();
                 if (character.getAgi() != 0) {
                     characterData.setAgi(character.getAgi());
                 }
